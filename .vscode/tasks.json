@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "flutter: analyze",
+      "type": "shell",
+      "command": "flutter analyze",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "dart: format (check only)",
+      "type": "shell",
+      "command": "dart format --output=none --set-exit-if-changed .",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "dart: format (apply)",
+      "type": "shell",
+      "command": "dart format .",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "flutter: test",
+      "type": "shell",
+      "command": "flutter test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "git: enable local pre-push checks",
+      "type": "shell",
+      "command": "git config core.hooksPath .githooks",
+      "group": "none",
+      "problemMatcher": []
+    }
+  ]
+}

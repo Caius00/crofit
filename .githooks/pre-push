@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v flutter >/dev/null 2>&1; then
+  echo "pre-push: flutter not found in PATH, skipping local checks." >&2
+  exit 0
+fi
+
+echo "pre-push: checking formatting..."
+if ! dart format --output=none --set-exit-if-changed .; then
+  echo ""
+  echo "pre-push: formatting issues found. Run 'dart format .' and commit the result." >&2
+  exit 1
+fi
+
+echo "pre-push: running flutter analyze..."
+if ! flutter analyze; then
+  echo ""
+  echo "pre-push: flutter analyze found issues. Fix them before pushing." >&2
+  exit 1
+fi
+
+echo "pre-push: all checks passed."
